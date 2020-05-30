@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\DropCreateDBOnModelChanged.cs" />
+    <Compile Include="Context\MuseumContext.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomExcursion.cs" />
     <Compile Include="Excursion.cs" />
