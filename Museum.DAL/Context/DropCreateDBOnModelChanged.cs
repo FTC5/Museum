@@ -47,7 +47,7 @@ namespace Museum.DAL.Context
                 context.Grafik.Add(grafik);
                 context.ExcursionsSchedules.Add(excursionsSchedule);
                 context.Guide.Add(guide);
-                context.Excursions.Add(excursion);
+                context.Excursion.Add(excursion);
                 context.CustomExcursions.Add(customExcursion);
 
             }

@@ -22,7 +22,7 @@ namespace Museum.DAL.Context
         public virtual DbSet<ExcursionsSchedule> ExcursionsSchedules { get; set; }
         public virtual DbSet<Exposition> Exposition { get; set; }
         public virtual DbSet<Grafik> Grafik { get; set; }
-        public virtual DbSet<Excursion> Excursions { get; set; }
+        public virtual DbSet<Excursion> Excursion { get; set; }
         public virtual DbSet<Guide> Guide { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -91,7 +91,7 @@ namespace Museum.BLL.Services
         {
             using (var context = new MuseumContext())
             {
-                var excursion = context.Excursions.Find(id);
+                var excursion = context.Excursion.Find(id);
                 return rebuilder.ExcursionToExcursionDTO(excursion);
             }
         }
