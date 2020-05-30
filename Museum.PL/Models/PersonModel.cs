@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Museum.BLL.DTO
+namespace Museum.PL.Models
 {
-    public class PersoneDTO
+    public class PersonModel
     {
         public  int Id { get; set; }
         public  int Age { get; set; }

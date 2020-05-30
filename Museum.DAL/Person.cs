@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Museum.DAL
 {
-    public class Persone
+    public class Person
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public   int Id { get; set; }

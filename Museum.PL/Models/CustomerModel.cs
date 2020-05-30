@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Museum.BLL.Interfaces
+namespace Museum.PL.Models
 {
-    public interface IInitService
+    public class CustomerModel :PersonModel
     {
-        void InitDropCreateDBOnModelChanged();
+        public int Id { get; set; }
     }
 }

@@ -9,24 +9,15 @@ using Museum.DAL;
 
 namespace Museum.BLL.Services
 {
-    public class ExpositionService : IExpositionService
+    public class ExpositionService : Service,IExpositionService
     {
-        IRebuilderService rebuilder;
         public ExpositionService()
         {
-            rebuilder = new RebuilderService();
         }
         public ExpositionDTO GetExpositionInfo(int id)
         {
-            using (var context = new MuseumContext())
-            {
-                var exposition = context.Exposition.Find(id);
-                if (exposition == null)
-                {
-                    return null;
-                }
-                return rebuilder.ExpositionToExpositionDTO(exposition);
-            }
+            var exposition = db.Exposition.Get(id);
+            return mapper.Map<ExpositionDTO>(exposition);
         }
     }
 }

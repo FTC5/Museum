@@ -12,56 +12,47 @@ using Museum.BLL.Infrastructure;
 
 namespace Museum.BLL.Services
 {
-    public class ExcursionsScheduleService : IExcursionsScheduleService
+    public class ExcursionsScheduleService : Service,IExcursionsScheduleService
     {
-        private IRebuilderService rebuilder;
         private IExpositionService expositionService;
         public ExcursionsScheduleService()
         {
-            rebuilder = new RebuilderService();
             expositionService = new ExpositionService();
         }
 
         public bool SignUpToCustomExcursion(int excursionId, CustomerDTO customer)
         {
-            using (var context = new MuseumContext())
-            {
-                var excursion = context.CustomExcursions.Find(excursionId);
-                if (excursion == null)
-                    throw new ExcursionNotFoundException("Excursion with id not found");
-                if (customer.Age < excursion.ExcursionsSchedule.Grafik.Exposition.TargetAudience)
-                    throw new SmallAgeCustomerException("Small age customer found");
+            var excursion = db.CustomExcursion.Get(excursionId);
+            if (excursion == null)
+                throw new ExcursionNotFoundException("Excursion with id not found");
+            if (customer.Age < excursion.ExcursionsSchedule.Grafik.Exposition.TargetAudience)
+                throw new SmallAgeCustomerException("Small age customer found");
 
-                var customerE = rebuilder.CustomerDTOToCustomer(customer);
-                context.Customer.Add(customerE);
-                excursion.Customers.Add(customerE);
-                context.Entry(excursion).State = EntityState.Modified;
-                context.SaveChanges();
-                return true;
-            }
-            throw new SmallAgeCustomerException("Customer is already registere");
+            var customerE = mapper.Map<Customer>(customer);
+            db.Customer.Create(customerE);
+            excursion.Customers.Add(customerE);
+            db.CustomExcursion.Update(excursion);
+            db.Save();
+            return true;
         }
         public void SignUpToCustomExcursion(int excursionId, IEnumerable<CustomerDTO> customers)
         {
-            using (var context = new MuseumContext())
+            var excursion = db.CustomExcursion.Get(excursionId);
+            if (excursion == null)
+                throw new ExcursionNotFoundException("Excursion with id not found");
+
+            var smallCustomers = cheackAge(customers, excursion.ExcursionsSchedule.Grafik.Exposition.TargetAudience);
+            if (smallCustomers.Count() > 0)
+                throw new SmallAgeCustomerException("Small age customers found",smallCustomers.ToList());
+
+            var customersE = mapper.Map<IEnumerable<Customer>>(customers);
+            foreach (var peaple in customersE)
             {
-                var excursion = context.CustomExcursions.Find(excursionId);
-                if (excursion == null)
-                    throw new ExcursionNotFoundException("Excursion with id not found");
-
-                var smallCustomers = cheackAge(customers, excursion.ExcursionsSchedule.Grafik.Exposition.TargetAudience);
-                if (smallCustomers.Count() > 0)
-                    throw new SmallAgeCustomerException("Small age customers found",smallCustomers.ToList());
-
-                var customerE = rebuilder.CustomerDTOToCustomer(customers);
-                foreach (var peaple in customerE)
-                {
-                    context.Customer.Add(peaple);
-                    excursion.Customers.Add(peaple);
-                }
-                context.Entry(excursion).State = EntityState.Modified;
-                context.SaveChanges();
+                db.Customer.Create(peaple);
+                excursion.Customers.Add(peaple);
             }
+            db.CustomExcursion.Update(excursion);
+            db.Save();
         }
         private IEnumerable<CustomerDTO> cheackAge(IEnumerable<CustomerDTO> customers,int ageLimit)
         {
@@ -77,23 +68,18 @@ namespace Museum.BLL.Services
         }
         public IEnumerable<CustomExcursionDTO> GetCustomExcursions(int id)
         {
-            using (var context = new MuseumContext()) 
+            var excursionShedule = db.ExcursionsSchedule.Get(id);
+            if (excursionShedule == null)
             {
-                var excursionShedule = (from excursionsSchedule in context.ExcursionsSchedules
-                                        where excursionsSchedule.Id == id
-                                        select excursionsSchedule).Include(s => s.CustomExcursions).FirstOrDefault();
-                return rebuilder.CustomExcursionToCustomExcursionDTO(excursionShedule.CustomExcursions);
+                return null;
             }
+            return mapper.Map<IEnumerable<CustomExcursionDTO>>(excursionShedule.CustomExcursions);
             
         }
-
         public ExcursionDTO GetScheduledExcursionsInfo(int id)
         {
-            using (var context = new MuseumContext())
-            {
-                var excursion = context.Excursions.Find(id);
-                return rebuilder.ExcursionToExcursionDTO(excursion);
-            }
+                var excursion = db.Excursion.Get(id);
+                return mapper.Map<ExcursionDTO>(excursion);
         }
     }
 }

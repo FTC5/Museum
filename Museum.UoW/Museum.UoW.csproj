@@ -5,19 +5,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41A5D265-26C1-4695-8E69-11AEAE3335B1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Museum.PL</RootNamespace>
-    <AssemblyName>Museum.PL</AssemblyName>
+    <ProjectGuid>{5AB2C8FE-B1F3-4801-AE53-6359770A2F36}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Museum.UoW</RootNamespace>
+    <AssemblyName>Museum.UoW</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +26,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,29 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMenu.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="MenuTemplate.cs" />
-    <Compile Include="Models\CustomerModel.cs" />
-    <Compile Include="Models\CustomExcursionModel.cs" />
-    <Compile Include="Models\ExcursionModel.cs" />
-    <Compile Include="Models\ExcursionsScheduleModel.cs" />
-    <Compile Include="Models\ExpositionModel.cs" />
-    <Compile Include="Models\GrafikModel.cs" />
-    <Compile Include="Models\GuideModel.cs" />
-    <Compile Include="Models\PersonModel.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="EFCodeFirst\UnitOfWork.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\AutoMapping.cs" />
+    <Compile Include="EFCodeFirst\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Museum.BLL\Museum.BLL.csproj">
-      <Project>{3a6d77bd-7829-4d00-82c2-430c25ae90fa}</Project>
-      <Name>Museum.BLL</Name>
+    <ProjectReference Include="..\Museum.DAL\Museum.DAL.csproj">
+      <Project>{a881a262-c92d-41a9-a174-f149ea8f0e9d}</Project>
+      <Name>Museum.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

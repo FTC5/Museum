@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Museum.BLL.DTO
+namespace Museum.PL.Models
 {
-    public class GrafikDTO
+    public class GrafikModel
     {
         public int Id { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public virtual ExpositionDTO Exposition { get; set; }
+        public virtual ExpositionModel Exposition { get; set; }
         public override string ToString()
         {
             return "ID "+Id.ToString()+"| Name "+ Exposition.ExpositionName + "| Start time "
