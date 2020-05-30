@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A6D77BD-7829-4D00-82C2-430C25AE90FA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Museum.BLL</RootNamespace>
+    <AssemblyName>Museum.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="DTO\CustomExcursionDTO.cs" />
+    <Compile Include="DTO\ExcursionDTO.cs" />
+    <Compile Include="DTO\ExcursionsScheduleDTO.cs" />
+    <Compile Include="DTO\ExpositionDTO.cs" />
+    <Compile Include="DTO\GrafikDTO.cs" />
+    <Compile Include="DTO\GuideDTO.cs" />
+    <Compile Include="DTO\PersoneDTO.cs" />
+    <Compile Include="Infrastructure\ExcursionNotFoundException.cs" />
+    <Compile Include="Infrastructure\SmallAgeCustomerException.cs" />
+    <Compile Include="Interfaces\ICheckIntService.cs" />
+    <Compile Include="Interfaces\IExcursionsScheduleService.cs" />
+    <Compile Include="Interfaces\IExpositionService.cs" />
+    <Compile Include="Interfaces\IGrafikService.cs" />
+    <Compile Include="Interfaces\IGuideService.cs" />
+    <Compile Include="Interfaces\IInitService.cs" />
+    <Compile Include="Interfaces\IRebuilderService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CheckIntService.cs" />
+    <Compile Include="Services\ExcursionsScheduleService.cs" />
+    <Compile Include="Services\ExpositionService.cs" />
+    <Compile Include="Services\GrafikService.cs" />
+    <Compile Include="Services\InitService.cs" />
+    <Compile Include="Services\RebuilderService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Museum.DAL\Museum.DAL.csproj">
+      <Project>{a881a262-c92d-41a9-a174-f149ea8f0e9d}</Project>
+      <Name>Museum.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
