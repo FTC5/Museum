@@ -11,7 +11,7 @@ namespace Museum.DAL.Context
     {
         protected override void Seed(MuseumContext context)
         {
-            List<string> ExpositionName = new List<string> { "Сigar and world", "Space", "Brain", "Fluid or sphere", "Nut", "Give me a cake" };
+            List<string> ExpositionName = new List<string> { "Cigar and world", "Space", "Brain", "Fluid or sphere", "Nut", "Give me a cake" };
             List<string> GuideNames = new List<string>() { "Kari Hensien", "Terry Adams", "Dan Park", "Peter Houston", "Lukas Keller", "Mathew Charles", "John Smith" };
             List<string> ExpositionTheme = new List<string> { "Philosophy", "Science", "Science", "Abstraction", "Rave", "Rave" };
             int time = 2;

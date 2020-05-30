@@ -32,6 +32,10 @@ namespace Museum.BLL.Infrastructure
         public override string ToString()
         {
             string text = Message + "\n";
+            if (list == null)
+            {
+                return text;
+            }
             foreach (var item in list)
             {
                 text += item.ToString()+"\n";

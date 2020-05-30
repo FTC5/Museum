@@ -5,18 +5,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A6D77BD-7829-4D00-82C2-430C25AE90FA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Museum.BLL</RootNamespace>
-    <AssemblyName>Museum.BLL</AssemblyName>
+    <ProjectGuid>{41A5D265-26C1-4695-8E69-11AEAE3335B1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Museum.PL</RootNamespace>
+    <AssemblyName>Museum.PL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -51,40 +53,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\CustomerDTO.cs" />
-    <Compile Include="DTO\CustomExcursionDTO.cs" />
-    <Compile Include="DTO\ExcursionDTO.cs" />
-    <Compile Include="DTO\ExcursionsScheduleDTO.cs" />
-    <Compile Include="DTO\ExpositionDTO.cs" />
-    <Compile Include="DTO\GrafikDTO.cs" />
-    <Compile Include="DTO\GuideDTO.cs" />
-    <Compile Include="DTO\PersoneDTO.cs" />
-    <Compile Include="Infrastructure\ExcursionNotFoundException.cs" />
-    <Compile Include="Infrastructure\SmallAgeCustomerException.cs" />
-    <Compile Include="Interfaces\ICheckIntService.cs" />
-    <Compile Include="Interfaces\IExcursionsScheduleService.cs" />
-    <Compile Include="Interfaces\IExpositionService.cs" />
-    <Compile Include="Interfaces\IGrafikService.cs" />
-    <Compile Include="Interfaces\IGuideService.cs" />
-    <Compile Include="Interfaces\IInitService.cs" />
-    <Compile Include="Interfaces\IRebuilderService.cs" />
+    <Compile Include="IMenu.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuTemplate.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CheckIntService.cs" />
-    <Compile Include="Services\ExcursionsScheduleService.cs" />
-    <Compile Include="Services\ExpositionService.cs" />
-    <Compile Include="Services\GrafikService.cs" />
-    <Compile Include="Services\InitService.cs" />
-    <Compile Include="Services\RebuilderService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Museum.DAL\Museum.DAL.csproj">
-      <Project>{a881a262-c92d-41a9-a174-f149ea8f0e9d}</Project>
-      <Name>Museum.DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Museum.BLL\Museum.BLL.csproj">
+      <Project>{3a6d77bd-7829-4d00-82c2-430c25ae90fa}</Project>
+      <Name>Museum.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
