@@ -69,7 +69,11 @@ namespace Museum.BLL.Services
         public IEnumerable<CustomExcursionDTO> GetCustomExcursions(int id)
         {
             var excursionShedule = db.ExcursionsSchedule.Get(id);
-            return mapper.Map<IEnumerable<CustomExcursionDTO>>(excursionShedule.CustomExcursions.ToArray());
+            if (excursionShedule == null)
+            {
+                return null;
+            }
+            return mapper.Map<IEnumerable<CustomExcursionDTO>>(excursionShedule.CustomExcursions);
             
         }
         public ExcursionDTO GetScheduledExcursionsInfo(int id)

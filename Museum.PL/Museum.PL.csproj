@@ -59,8 +59,17 @@
     <Compile Include="IMenu.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MenuTemplate.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\CustomExcursionModel.cs" />
+    <Compile Include="Models\ExcursionModel.cs" />
+    <Compile Include="Models\ExcursionsScheduleModel.cs" />
+    <Compile Include="Models\ExpositionModel.cs" />
+    <Compile Include="Models\GrafikModel.cs" />
+    <Compile Include="Models\GuideModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\AutoMapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
