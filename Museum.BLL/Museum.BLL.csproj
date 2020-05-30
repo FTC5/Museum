@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -58,7 +61,8 @@
     <Compile Include="DTO\ExpositionDTO.cs" />
     <Compile Include="DTO\GrafikDTO.cs" />
     <Compile Include="DTO\GuideDTO.cs" />
-    <Compile Include="DTO\PersoneDTO.cs" />
+    <Compile Include="DTO\PersonDTO.cs" />
+    <Compile Include="Infrastructure\AutoMapping.cs" />
     <Compile Include="Infrastructure\ExcursionNotFoundException.cs" />
     <Compile Include="Infrastructure\SmallAgeCustomerException.cs" />
     <Compile Include="Interfaces\ICheckIntService.cs" />
@@ -66,20 +70,21 @@
     <Compile Include="Interfaces\IExpositionService.cs" />
     <Compile Include="Interfaces\IGrafikService.cs" />
     <Compile Include="Interfaces\IGuideService.cs" />
-    <Compile Include="Interfaces\IInitService.cs" />
-    <Compile Include="Interfaces\IRebuilderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CheckIntService.cs" />
     <Compile Include="Services\ExcursionsScheduleService.cs" />
     <Compile Include="Services\ExpositionService.cs" />
     <Compile Include="Services\GrafikService.cs" />
-    <Compile Include="Services\InitService.cs" />
-    <Compile Include="Services\RebuilderService.cs" />
+    <Compile Include="Services\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Museum.DAL\Museum.DAL.csproj">
       <Project>{a881a262-c92d-41a9-a174-f149ea8f0e9d}</Project>
       <Name>Museum.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Museum.UoW\Museum.UoW.csproj">
+      <Project>{5ab2c8fe-b1f3-4801-ae53-6359770a2f36}</Project>
+      <Name>Museum.UoW</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

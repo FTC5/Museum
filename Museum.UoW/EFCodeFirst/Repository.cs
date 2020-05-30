@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Museum.UoW.EFCodeFirst
 {
-    class Repository<T> : IRepository<T> where T : class 
+    public class Repository<T> : IRepository<T>,IDisposable where T : class 
     {
         private MuseumContext db = null;
         private DbSet<T> table = null;

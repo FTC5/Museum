@@ -13,10 +13,10 @@ namespace Museum.BLL.DTO
         public int Id { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public string ExpositionName { get; set; }
+        public virtual ExpositionDTO Exposition { get; set; }
         public override string ToString()
         {
-            return "ID "+Id.ToString()+"| Name "+ExpositionName+"| Start time "
+            return "ID "+Id.ToString()+"| Name "+ Exposition.ExpositionName + "| Start time "
                 +StartTime.ToString()+"\t| End Time "+EndTime.ToString()+"\n";
         }
     }

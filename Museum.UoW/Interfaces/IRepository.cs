@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Museum.UoW.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> : IDisposable where T : class
     {
         T Get(int id);
         IQueryable<T> Find(Func<T, Boolean> perdicate);

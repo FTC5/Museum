@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Museum.BLL.DTO
 {
-    public class PersoneDTO
+    public class PersonDTO
     {
         public  int Id { get; set; }
         public  int Age { get; set; }

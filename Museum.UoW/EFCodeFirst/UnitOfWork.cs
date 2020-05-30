@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Museum.UoW.EFCodeFirst
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private MuseumContext db = null;
         private bool disposed = false;
@@ -20,7 +20,13 @@ namespace Museum.UoW.EFCodeFirst
         private IRepository<Grafik> grafik;
         private IRepository<Excursion> excursion;
         private IRepository<Guide> guide;
+        private string connectionString;
 
+        public UnitOfWork(string connectionString)
+        {
+            this.db = new MuseumContext(connectionString);
+            this.connectionString = connectionString;
+        }
         public IRepository<Customer> Customer
         {
             get

@@ -13,8 +13,6 @@ namespace Museum.PL
     {
         static void Main(string[] args)
         {
-            IInitService ini = new InitService();
-            ini.InitDropCreateDBOnModelChanged();
             IExcursionsScheduleService excursionsSchedule = new ExcursionsScheduleService();
             IExpositionService exposition = new ExpositionService();
             IGrafikService grafik = new GrafikService();

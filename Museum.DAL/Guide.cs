@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Museum.DAL
 {
     [Table("Guide")]
-    public class Guide : Persone
+    public class Guide : Person
     {
         private ICollection<CustomExcursion> customExcursion;
 

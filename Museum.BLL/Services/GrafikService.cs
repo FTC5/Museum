@@ -11,30 +11,29 @@ using Museum.DAL;
 
 namespace Museum.BLL.Services
 {
-    public class GrafikService : IGrafikService
+    public class GrafikService : Service,IGrafikService
     {
-        IRebuilderService rebuilderService;
         public GrafikService()
         {
-            rebuilderService = new RebuilderService();
+
         }
 
         public IEnumerable<GrafikDTO> GetGrafiks()
         {
-            using (var context = new MuseumContext())
-            {
-                var grafiks = context.Grafik.Include(g => g.Exposition);
-                return rebuilderService.GrafikToGrafikDTO(grafiks.ToList());
-            }
+            var grafiks = db.Grafik.GetAll();
+            return mapper.Map<IEnumerable<GrafikDTO>>(grafiks);
         }
         public IEnumerable<GrafikDTO> FindByName(string name)
         {
-            
-            using (var context = new MuseumContext())
+            var grafiks = db.Grafik.Find(g =>
             {
-                var grafiks = context.Grafik.Where(g => g.Exposition.ExpositionName.Contains(name));
-                return rebuilderService.GrafikToGrafikDTO(grafiks.ToArray());
-            }
+                if (g.Exposition.ExpositionName.Contains(name))
+                {
+                    return true;
+                }
+                return false;
+            });
+            return mapper.Map<IEnumerable<GrafikDTO>>(grafiks.ToArray());
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Museum.BLL.DTO
 {
-    public class GuideDTO : PersoneDTO
+    public class GuideDTO : PersonDTO
     {
         private ICollection<CustomExcursionDTO> customExcursion;
 

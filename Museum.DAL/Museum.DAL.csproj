@@ -60,7 +60,7 @@
     <Compile Include="Exposition.cs" />
     <Compile Include="Grafik.cs" />
     <Compile Include="Guide.cs" />
-    <Compile Include="Persone.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
