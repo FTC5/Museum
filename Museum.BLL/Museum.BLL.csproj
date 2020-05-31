@@ -67,6 +67,7 @@
     <Compile Include="DTO\PersonDTO.cs" />
     <Compile Include="Infrastructure\AutoMapping.cs" />
     <Compile Include="Infrastructure\ExcursionNotFoundException.cs" />
+    <Compile Include="Infrastructure\BLLModule.cs" />
     <Compile Include="Infrastructure\SmallAgeCustomerException.cs" />
     <Compile Include="Interfaces\IExcursionsScheduleService.cs" />
     <Compile Include="Interfaces\IExpositionService.cs" />

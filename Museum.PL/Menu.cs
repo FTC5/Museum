@@ -16,21 +16,21 @@ namespace Museum.PL
     class Menu : MenuTemplate, IMenu
     {
         private IMapper mapper;
-        public Menu(IExcursionsScheduleService excursionsScheduleService, IExpositionService expositionService, IGrafikService grafikService) 
+        public Menu(IMapper mapper, IExcursionsScheduleService excursionsScheduleService, IExpositionService expositionService, IGrafikService grafikService) 
             : base(excursionsScheduleService, expositionService, grafikService)
         {
-            this.mapper = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapping>()).CreateMapper();
+            this.mapper = mapper;
         }
         private void Choice(string message)
         {
-            string input;
+            string input="";
             while (true)
             {
                 Console.WriteLine(message);
                 input = Console.ReadLine();
-                if (!Int32.TryParse(input, out choice))
+                if (Int32.TryParse(input, out choice))
                 {
-                    break;
+                    return;
                 }
                 else
                 {

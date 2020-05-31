@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Museum.BLL.Infrastructure
 {
-    class AutoMapping : Profile
+    public class AutoMapping : Profile
     {
         public AutoMapping()
         {

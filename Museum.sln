@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Museum.PL", "Museum.PL\Muse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Museum.UoW", "Museum.UoW\Museum.UoW.csproj", "{5AB2C8FE-B1F3-4801-AE53-6359770A2F36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Museum.BLL.Tests", "Museum.BLL.Tests\Museum.BLL.Tests.csproj", "{11973133-17FA-4D48-A224-480A9FD7D528}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5AB2C8FE-B1F3-4801-AE53-6359770A2F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AB2C8FE-B1F3-4801-AE53-6359770A2F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AB2C8FE-B1F3-4801-AE53-6359770A2F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11973133-17FA-4D48-A224-480A9FD7D528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11973133-17FA-4D48-A224-480A9FD7D528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11973133-17FA-4D48-A224-480A9FD7D528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11973133-17FA-4D48-A224-480A9FD7D528}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
