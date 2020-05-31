@@ -16,20 +16,31 @@ namespace Museum.PL
     class Menu : MenuTemplate, IMenu
     {
         private IMapper mapper;
-        private ICheckIntService check;
         public Menu(IExcursionsScheduleService excursionsScheduleService, IExpositionService expositionService, IGrafikService grafikService) 
             : base(excursionsScheduleService, expositionService, grafikService)
         {
-            check = new CheckIntService();
             this.mapper = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapping>()).CreateMapper();
         }
-        private void Choice()
+        private void Choice(string message)
         {
-            choice = check.NumberCheck("Please enter grafik or exposition Id :");
+            string input;
+            while (true)
+            {
+                Console.WriteLine(message);
+                input = Console.ReadLine();
+                if (!Int32.TryParse(input, out choice))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("//|Wrong input!|\\\\");
+                }
+            }
         }
         public override void GetExposition(IExpositionService expositionService)
         {
-            Choice();
+            Choice("Please enter grafik or exposition Id :");
             var exposition = expositionService.GetExpositionInfo(choice);
             if (exposition==null)
             {
@@ -41,7 +52,7 @@ namespace Museum.PL
 
         public override void GetExpositionCustomerExcursions(IExcursionsScheduleService excursionsScheduleService)
         {
-            Choice();
+            Choice("Please enter grafik or exposition Id :");
             var customeExcursion = excursionsScheduleService.GetCustomExcursions(choice);
             if (customeExcursion == null)
             {
@@ -56,7 +67,7 @@ namespace Museum.PL
 
         public override void GetExpositionExcursions(IExcursionsScheduleService excursionsScheduleService)
         {
-            Choice();
+            Choice("Please enter grafik or exposition Id :");
             var scheduleExcursion = excursionsScheduleService.GetScheduledExcursionsInfo(choice);
             if (scheduleExcursion == null)
             {
@@ -73,7 +84,7 @@ namespace Museum.PL
 
         public override void GetExpositionScheduleExcursions(IExcursionsScheduleService excursionsScheduleService)
         {
-            Choice();
+            Choice("Please enter grafik or exposition Id :");
             var scheduleExcursion = excursionsScheduleService.GetScheduledExcursionsInfo(choice);
             if (scheduleExcursion == null)
             {
@@ -111,7 +122,7 @@ namespace Museum.PL
 
         public override void SingUpTOCustomerExcursions(IExcursionsScheduleService excursionsScheduleService)
         {
-            choice = check.NumberCheck("Please enter custome excursion id:");
+            Choice("Please enter custome excursion id:");
             string setting="";
             Console.WriteLine("Register one persone press 1.\n" +
                 "Register many persone press another symbol");
