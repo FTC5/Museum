@@ -11,6 +11,7 @@ using System.Web.Http;
 
 namespace Museum.Web.Controllers
 {
+    [RoutePrefix("api/custom/excursion")]
     public class CustomExcursionController : ApiController
     {
         IMapper mapper;
@@ -33,7 +34,7 @@ namespace Museum.Web.Controllers
             excursionsScheduleService.SignUpToCustomExcursion(excursionId, customerDTO);
             return Ok();
         }
-        [HttpPost]
+        [HttpPost,Route("add/many")]
         public IHttpActionResult AddManyPerson(int excursionId, [FromBody] CustomerModel[] customers)
         {
             var customersDTO = mapper.Map<IEnumerable<CustomerDTO>>(customers);

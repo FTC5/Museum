@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace Museum.Web.Controllers
 {
+    [RoutePrefix("api/grafik")]
     public class GrafikController : ApiController
     {
         IMapper mapper;
@@ -28,7 +29,7 @@ namespace Museum.Web.Controllers
             return Ok(grafiks);
             
         }
-        [HttpGet]
+        [HttpGet,Route("find")]
         public IHttpActionResult FindExpositionByGrafiks(string name)
         {
             var grafiks = mapper.Map<IEnumerable<GrafikModel>>(grafikService.FindByName(name));
