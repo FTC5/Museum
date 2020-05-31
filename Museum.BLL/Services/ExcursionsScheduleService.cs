@@ -9,15 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Museum.DAL;
 using Museum.BLL.Infrastructure;
+using AutoMapper;
+using Museum.UoW.Interfaces;
 
 namespace Museum.BLL.Services
 {
     public class ExcursionsScheduleService : Service,IExcursionsScheduleService
     {
         private IExpositionService expositionService;
-        public ExcursionsScheduleService()
+        public ExcursionsScheduleService(IExpositionService expositionService,IMapper mapper, IUnitOfWork db) : base(mapper, db)
         {
-            expositionService = new ExpositionService();
+            this.expositionService = expositionService;
         }
 
         public bool SignUpToCustomExcursion(int excursionId, CustomerDTO customer)

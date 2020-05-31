@@ -8,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Museum.DAL;
+using AutoMapper;
+using Museum.UoW.Interfaces;
 
 namespace Museum.BLL.Services
 {
     public class GrafikService : Service,IGrafikService
     {
-        public GrafikService()
+        public GrafikService(IMapper mapper, IUnitOfWork db) : base(mapper, db)
         {
-
         }
 
         public IEnumerable<GrafikDTO> GetGrafiks()

@@ -12,13 +12,13 @@ namespace Museum.BLL.Services
 {
     public class Service
     {
-        protected IUnitOfWork db;
+        protected readonly IUnitOfWork db;
         protected readonly IMapper mapper;
 
-        public Service()
+        public Service(IMapper mapper, IUnitOfWork db)
         {
-            this.db = new UnitOfWork("MuseumContext");
-            this.mapper = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapping>()).CreateMapper();
+            this.db = db;
+            this.mapper = mapper;
         }
     }
 }
