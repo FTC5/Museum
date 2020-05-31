@@ -34,7 +34,7 @@ namespace Museum.BLL.Services
                 }
                 return false;
             });
-            return mapper.Map<IEnumerable<GrafikDTO>>(grafiks.ToArray());
+            return mapper.Map<IEnumerable<GrafikDTO>>(grafiks);
         }
     }
 }
