@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Museum.BLL.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,9 @@ namespace Museum.BLL.Interfaces
 {
     public interface IExpositionService
     {
-        DTO.ExpositionDTO GetExpositionInfo(int id);
+        ExpositionDTO GetExpositionInfo(int id);
+        void DeleteExposition(int id);
+        void UpdateExposition(ExpositionDTO exposition);
+        void AddExposition(ExpositionDTO exposition);
     }
 }

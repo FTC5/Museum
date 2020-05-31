@@ -46,7 +46,7 @@ namespace Museum.Web.App_Start
         private static IKernel CreateKernel()
         {
             var modules = new INinjectModule[] { new BLLModule("MuseumContext"), new AutoMapperModule() };
-            var kernel = new StandardKernel();
+            var kernel = new StandardKernel(modules);
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);

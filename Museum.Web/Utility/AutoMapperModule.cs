@@ -20,6 +20,7 @@ namespace OnlineAuction.Web.Utility
             IMapper mapper = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<AutoMapping>();
+                cfg.AddProfile<Museum.BLL.Infrastructure.AutoMapping>();
                 cfg.ConstructServicesUsing(type => context.Kernel.GetType());
             }).CreateMapper();
             return mapper;
